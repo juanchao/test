@@ -1,0 +1,14 @@
+# Obsidian 特定忽略
+.obsidian/workspace
+.obsidian/workspace-mobile
+.obsidian/appearance.json
+.obsidian/core-plugins-migration.json
+.obsidian/graph.json
+.obsidian/hotkeys.json
+.obsidian/types.json
+.obsidian/canvas-backlinks.json
+
+# Python/MkDocs 构建产物
+site/
+__pycache__/
+*.pyc

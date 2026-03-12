@@ -1,0 +1,26 @@
+image: python:3.9
+
+# 定义构建阶段
+pages:
+  stage: deploy
+  
+  # 只有推送到 main (或 master) 分支时才触发
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "master"
+
+  before_script:
+    # 安装依赖
+    - pip install --upgrade pip
+    - pip install mkdocs mkdocs-material mkdocs-ezlinks-plugin
+    # 如果还有其他插件，请在这里添加，例如:
+    # - pip install mkdocs-wikilinks-plugin
+
+  script:
+    # 构建网站，输出目录必须是 public (GitLab Pages 的强制要求)
+    - mkdocs build -d public
+
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week
